@@ -29,20 +29,16 @@ public class EnemySpawner : MonoBehaviour
     [Range(0.05f, 1f)]
     [SerializeField] private float edgeIndicatorSize = 0.1f;
     [SerializeField] private Color edgeIndicatorColor;
-    
+
+    public bool testingOn;
     private Transform _myTransform;
     
     private void Awake()
     {
         this._myTransform = transform;
-    }
-
-    private void Update()
-    {
-        if (testBool)
+        if (testingOn)
         {
-            InitiateEnemy();
-            testBool = false;
+            InitiateSpawning();
         }
     }
 

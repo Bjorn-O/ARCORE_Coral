@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 553202737061978897}
   - component: {fileID: 1230982433553241305}
   - component: {fileID: 4708260608989163056}
-  - component: {fileID: 8399959751108893218}
   m_Layer: 0
   m_Name: Coral_Reef
   m_TagString: Untagged
@@ -50,6 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastPos: {fileID: 7617763720572478285}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   onGrounded:
     m_PersistentCalls:
       m_Calls:
@@ -77,19 +79,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556b7752cff0fcf438c134acbb2e7e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &8399959751108893218
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553202737061978909}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.22
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3045502280588883967
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +136,7 @@ MonoBehaviour:
   edgeIndicators: 100
   edgeIndicatorSize: 0.05
   edgeIndicatorColor: {r: 1, g: 0, b: 0, a: 1}
+  testingOn: 0
 --- !u!1 &5055140089604686013
 GameObject:
   m_ObjectHideFlags: 0

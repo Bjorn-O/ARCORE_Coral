@@ -9,6 +9,7 @@ using UnityEngine.XR.ARFoundation;
 public class CoralPlacer : MonoBehaviour
 {
     [SerializeField] private Transform raycastPos;
+    [SerializeField] private LayerMask layerMask;
     private ARRaycastManager _raycastManager;
     private bool _grounded;
 
