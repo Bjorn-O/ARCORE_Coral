@@ -377,9 +377,9 @@ GameObject:
   - component: {fileID: 4833425134896685189}
   - component: {fileID: 482519365499296570}
   - component: {fileID: 6695241411032709962}
+  - component: {fileID: 5121241039699640841}
   - component: {fileID: 5591470955382776128}
   - component: {fileID: 2888163817162850487}
-  - component: {fileID: 5121241039699640841}
   m_Layer: 7
   m_Name: CoralEnemy
   m_TagString: Enemy
@@ -466,6 +466,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onFlung:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5121241039699640841}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: DestroyThis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5121241039699640841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163448027657916210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a2e355562b4938bdbd5d4195aab66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathExplosion: {fileID: 0}
+  destroyTime: 5
 --- !u!136 &5591470955382776128
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -496,20 +525,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5121241039699640841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4163448027657916210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16a2e355562b4938bdbd5d4195aab66d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathExplosion: {fileID: 0}
-  destroyTime: 5
 --- !u!1 &6505629303089900775
 GameObject:
   m_ObjectHideFlags: 0

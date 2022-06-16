@@ -16,6 +16,7 @@ namespace Input
         [Header("Events")] public UnityEvent onTensionOverload;
         public UnityEvent onTensionRelease;
         public UnityEvent onTensionIncrease;
+        public UnityEvent onFlung;
 
         private Vector2 _tensileDirection;
         private float _tensileStrength;
@@ -60,6 +61,7 @@ namespace Input
             {
                 rb.AddForce(direction * speed);
             }
+            onFlung?.Invoke();
         }
     }
 }

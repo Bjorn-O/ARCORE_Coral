@@ -9,12 +9,17 @@ public class Enemy : MonoBehaviour
     [Header("Variables")]
     [SerializeField] [Range(0, 5)] private float destroyTime;
 
+    public void DestroyThis()
+    {
+        Destroy(this.gameObject, destroyTime);
+    }
+    
     private void OnDestroy()
     {
         if (deathExplosion != null)
-        {
-                    var kaboom = Instantiate(deathExplosion);
-                    Destroy(kaboom, 5f);
+        { 
+            var kaboom = Instantiate(deathExplosion);
+            Destroy(kaboom, 5f);
         }
     }
 }
