@@ -8,12 +8,17 @@ namespace Input
         private Transform _startPosition;
         private Draggable _draggable;
 
+        private bool isDraggable = false;
         private Vector2 _dragDirection;
         private float _dragDistance;
         
         public CurrentTouch(Draggable draggable, GameObject touchedObject, Transform position)
         {
-            _draggable = draggable;
+            if (draggable != null)
+            {
+                _draggable = draggable;
+                isDraggable = true;
+            }
             _touchedObject = touchedObject;
             _startPosition = position;
             Debug.Log("I'm alive");
@@ -21,12 +26,13 @@ namespace Input
 
         public void Update(Vector2 direction)
         {
+            if (!isDraggable) return;
             _draggable.AddTension(direction);
         }
 
         public void Released()
         {
-            Debug.Log("dying");
+            if (!isDraggable) return;
             _draggable.onTensionRelease.Invoke();
         }
     }

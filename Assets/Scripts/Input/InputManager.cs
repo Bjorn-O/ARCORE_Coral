@@ -67,7 +67,7 @@ namespace Input
         
         private void EndTouch(InputAction.CallbackContext context)
         {
-            _currentTouch.Released();
+            _currentTouch?.Released();
             _currentTouch = null;
         }
         
