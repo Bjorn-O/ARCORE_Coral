@@ -11,7 +11,10 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        var kaboom = Instantiate(deathExplosion);
-        Destroy(kaboom, 5f);
+        if (deathExplosion != null)
+        {
+                    var kaboom = Instantiate(deathExplosion);
+                    Destroy(kaboom, 5f);
+        }
     }
 }
