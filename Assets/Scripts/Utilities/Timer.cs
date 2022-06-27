@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -7,19 +8,24 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
 
-    [SerializeField] Text text;
+    [SerializeField] TMP_Text text;
     [SerializeField] float currentTime;
     [SerializeField] UnityEvent OnTimerEnd;
+    private bool _isTimerActive = false;
 
     private void Awake()
     {
-        currentTime *= 60;
+        currentTime++;
     }
 
     void Update()
     {
-        UpdateTime();
+        if (_isTimerActive)
+        {
+            UpdateTime();
+        }
     }
+    
     void UpdateTime()
     {
         currentTime = currentTime - Time.deltaTime;
@@ -33,6 +39,11 @@ public class Timer : MonoBehaviour
     }
     public void ResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Scenes/Start Screen");
+    }
+
+    public void EnableTimer()
+    {
+        _isTimerActive = true;
     }
 }

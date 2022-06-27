@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Input
@@ -10,8 +9,9 @@ namespace Input
         [Header("Components")] [SerializeField]
         private Rigidbody rb;
 
-        [Header("Variables")] [SerializeField] private float tensileLimit;
-        [SerializeField] private float minimumStrength;
+        [Header("Variables")] 
+        [SerializeField] private float tensileLimit;
+        [SerializeField] private float flingSpeed;
 
         [Header("Events")] public UnityEvent onTensionOverload;
         public UnityEvent onTensionRelease;
@@ -20,10 +20,13 @@ namespace Input
 
         private Vector2 _tensileDirection;
         private float _tensileStrength;
+        
+        
 
         private void Awake()
         {
             rb.isKinematic = true;
+            Debug.Log(this.gameObject.name + ": I'm grabbed!");
         }
 
         public void AddTension(Vector2 direction)
@@ -38,6 +41,7 @@ namespace Input
         {
             _tensileDirection -= _tensileDirection;
             _tensileStrength = 0;
+            Debug.Log("I'M FREE!");
         }
 
         public void CheckTension()
@@ -53,14 +57,11 @@ namespace Input
         private void Fling(Vector3 direction, float speed)
         {
             rb.isKinematic = false;
-            if (speed < minimumStrength)
-            {
-                rb.AddForce(direction * minimumStrength);
-            }
-            else
-            {
-                rb.AddForce(direction * speed);
-            }
+            rb.AddForce(direction * flingSpeed);
+            var x = Random.Range(0, 1f);
+            var y = Random.Range(0f, 1f);
+            var z = Random.Range(0f, 1f);
+            rb.AddTorque(new Vector3(x,y,z) * 75);
             onFlung?.Invoke();
         }
     }

@@ -48,7 +48,7 @@ namespace Input
 
         private void UpdateTouch(CurrentTouch touch)
         {
-            if(touch == null) return;
+            if(_currentTouch == null) return;
             Debug.Log("Dragging");
             touch.Update(_controls.Touch.TouchDelta.ReadValue<Vector2>());
         }
@@ -67,6 +67,7 @@ namespace Input
         
         private void EndTouch(InputAction.CallbackContext context)
         {
+            Debug.Log("See me without lifting a finger? Ended early");
             _currentTouch?.Released();
             _currentTouch = null;
         }
