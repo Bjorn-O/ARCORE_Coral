@@ -42,10 +42,12 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void InitiateEnemy()
+    public GameObject InitiateEnemy()
     {
         var enemy = Instantiate(enemyToSpawn, GetRandomSpawnPoint(), Quaternion.identity);
+        enemy.GetComponent<EnemyMovement>().Target(this.transform);
         enemy.transform.LookAt(_myTransform);
+        return enemy;
     }
 
     public void InitiateSpawning()

@@ -1941,6 +1941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
+  materials: []
   components:
   - {fileID: 2391934037044237663}
   - {fileID: 756993029331047381}
@@ -10779,7 +10780,7 @@ MonoBehaviour:
   spawnRangeMin: 1
   testBool: 0
   drawGizmos: 0
-  edgeIndicators: 100
+  edgeIndicators: 10
   edgeIndicatorSize: 0.05
   edgeIndicatorColor: {r: 1, g: 0, b: 0, a: 1}
   testingOn: 0

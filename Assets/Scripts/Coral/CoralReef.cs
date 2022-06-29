@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class CoralReef : MonoBehaviour
 {
     [Range(0, 100)] [SerializeField]
     private float _health;
+
+    [SerializeField] private Material[] materials;
 
     public float health
     {
@@ -22,10 +25,16 @@ public class CoralReef : MonoBehaviour
             }
         }
     }
+
     public MeshRenderer[] components;
 
     private static readonly int SaturationAmount = Shader.PropertyToID("_Saturation_Amount");
-    
+
+
+    private void Start()
+    {
+        health = 100;
+    }
 
     private void Update()
     {

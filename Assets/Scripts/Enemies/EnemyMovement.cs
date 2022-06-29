@@ -6,27 +6,22 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private Transform targetReef;
-    private float distance;
+    private Transform _targetCoral;
+    private float _distance;
 
     [SerializeField] private float minimumDistance = 0.5f;
     [SerializeField] private float speed = 5f;
-    private bool shouldMove = true;
-
-    private void Awake()
-    {
-        targetReef = GameObject.FindObjectOfType<CoralReef>().transform;
-    }
+    private bool _shouldMove = true;
 
     private void Update()
     {
-        if (!shouldMove) return;
+        if (!_shouldMove) return;
         Move();
     }
 
     public void Target(Transform target)
     {
-        targetReef = target;
+        _targetCoral = target;
     }
 
     private void Move()
@@ -36,18 +31,17 @@ public class EnemyMovement : MonoBehaviour
             DisableMove();
             return;
         }
-        print("I'm moving");
         var step = speed * Time.deltaTime;
-        transform.position =  Vector3.MoveTowards(transform.position, targetReef.position, step);
+        transform.position =  Vector3.MoveTowards(transform.position, _targetCoral.position, step);
     }
 
     private float CalculateDistance()
     {
-        return Vector3.Distance(transform.position, targetReef.position);
+        return Vector3.Distance(transform.position, _targetCoral.position);
     }
 
     public void DisableMove()
     {
-        shouldMove = false;
+        _shouldMove = false;
     }
 }
