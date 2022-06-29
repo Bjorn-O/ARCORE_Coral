@@ -1936,8 +1936,8 @@ Transform:
   m_GameObject: {fileID: 553202737061978909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4531270963158592427}
   - {fileID: 3981640346403043700}
@@ -1968,7 +1968,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2216276650744358486}
         m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: InitiateSpawning
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23831,8 +23831,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7993848192617558336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12186552, y: 0.066, z: 0.14937496}
-  m_LocalScale: {x: 604.67883, y: 604.67883, z: 604.67883}
+  m_LocalPosition: {x: 0.12186552, y: 0.032, z: 0.077}
+  m_LocalScale: {x: 396.8114, y: 154.60085, z: 417.51175}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 553202737061978897}
