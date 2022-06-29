@@ -4,25 +4,45 @@ using UnityEngine;
 
 public class CoralReef : MonoBehaviour
 {
-    [SerializeField] float health;
-    public Component[] components;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    [Range(0, 100)] [SerializeField]
+    private float _health;
 
-    // Update is called once per frame
-    void Update()
+    public float health
+    {
+        get => _health;
+        set
+        {
+            if ((_health + value)> 100)
+            {
+                _health = 100;
+            }
+            else
+            {
+                _health += value;
+            }
+        }
+    }
+    public MeshRenderer[] components;
+
+    private static readonly int SaturationAmount = Shader.PropertyToID("_Saturation_Amount");
+    
+
+    private void Update()
     {
         HandleSaturation();
     }
 
-    void HandleSaturation()
+    public void DamageCoral()
+    {
+        _health -= 1;
+    }
+
+    private void HandleSaturation()
     {
         components = GetComponentsInChildren<MeshRenderer>();
-        foreach (MeshRenderer mesh in components)
+        foreach (var mesh in components)
         {
-            mesh.material.SetFloat("_Saturation_Amount", health / 100);
+            mesh.material.SetFloat(SaturationAmount, _health / 100);
         }
     }
 }
