@@ -318,7 +318,7 @@
         "m_Id": "ecc299e3adbc44f1a74fe9e91afd71ad"
     },
     "m_AllowMaterialOverride": false,
-    "m_SurfaceType": 1,
+    "m_SurfaceType": 0,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
@@ -873,7 +873,7 @@
     "m_StageCapability": 2,
     "m_Value": {
         "x": 1.0,
-        "y": 0.185642808675766,
+        "y": 0.18269231915473939,
         "z": 0.0
     },
     "m_DefaultValue": {
