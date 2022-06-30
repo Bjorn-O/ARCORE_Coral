@@ -15,9 +15,6 @@ public class CoralPlacer : MonoBehaviour
 
     public UnityEvent onGrounded = new UnityEvent();
 
-    [Header("Debugging Properties")] 
-    [SerializeField] private Transform testPosition;
-    
     private void Awake()
     {
         _raycastManager = FindObjectOfType<ARRaycastManager>();
@@ -27,7 +24,7 @@ public class CoralPlacer : MonoBehaviour
     {
         if (_raycastManager != null && !_grounded)
         {
-            //FindGround();
+            FindGround();
         }
     }
 
@@ -40,10 +37,5 @@ public class CoralPlacer : MonoBehaviour
             _grounded = true;
             onGrounded.Invoke();
         }
-    }
-
-    public void PlaceCoral()
-    {
-        transform.position = testPosition.position;
     }
 }

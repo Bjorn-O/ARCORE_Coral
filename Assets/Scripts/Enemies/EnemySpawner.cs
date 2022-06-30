@@ -1,3 +1,4 @@
+using System;
 using Input;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,42 +7,28 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private GameObject enemyToSpawn;
-    
-    [Header("Spawn Timer")]
-    [SerializeField] private float initialDelay;
-    [SerializeField] private float spawnDelay;
 
     [Header("SpawnDirection")] 
     [Range(0, 360)]
-    [SerializeField] private float spawnDirection;
+    [SerializeField] private float spawnDirection = 0;
     [Range(0, 360)]
-    [SerializeField] private float spawnAngle;
-    [SerializeField] private float spawnRangeMax;
-    [SerializeField] private float spawnRangeMin;
+    [SerializeField] private float spawnAngle = 90;
+    [SerializeField] private float spawnRangeMax = 1;
+    [SerializeField] private float spawnRangeMin = 0.5f;
 
     [Header("TestValues")] 
     [SerializeField] private bool testBool;
 
     [Header("GizmoSettings")] 
-    [SerializeField] private bool drawGizmos;
+    [SerializeField] private bool drawGizmos = true;
     [Range(0,360)]
-    [SerializeField] private int edgeIndicators;
-    [Range(0.05f, 1f)]
-    [SerializeField] private float edgeIndicatorSize = 0.1f;
-    [SerializeField] private Color edgeIndicatorColor;
+    [SerializeField] private int edgeIndicators = 10;
+    [Range(0.05f, 0.01f)]
+    [SerializeField] private float edgeIndicatorSize = 0.025f;
 
     public bool testingOn;
     private Transform _myTransform;
     
-    private void Awake()
-    {
-        this._myTransform = transform;
-        if (testingOn)
-        {
-            InitiateSpawning();
-        }
-    }
-
     public GameObject InitiateEnemy()
     {
         var enemy = Instantiate(enemyToSpawn, GetRandomSpawnPoint(), Quaternion.identity);
@@ -50,22 +37,12 @@ public class EnemySpawner : MonoBehaviour
         return enemy;
     }
 
-    public void InitiateSpawning()
-    {
-        InvokeRepeating(nameof(InitiateEnemy),initialDelay, spawnDelay);
-    }
-
-    public void DisableSpawning()
-    {
-        CancelInvoke(nameof(InitiateEnemy));
-    }
-    
     private Vector3 GetRandomSpawnPoint()
     {
-        float randAngle = Random.Range((-spawnAngle / 2) + spawnDirection,(spawnAngle / 2)+ spawnDirection);
+        _myTransform ??= gameObject.transform; // hier was je fout! ik doe t niet hier ipv awake want je anders script runned eerder dan deze.
+        var randAngle = Random.Range((-spawnAngle / 2) + spawnDirection,(spawnAngle / 2)+ spawnDirection);
         var randRad = randAngle * Mathf.PI / 180;
         var randDist = Random.Range(spawnRangeMin, spawnRangeMax);
- 
         return _myTransform.position + new Vector3(Mathf.Sin(randRad),0 ,Mathf.Cos(randRad))*randDist;
     }
 
@@ -90,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
             Quaternion localRotation = Quaternion.AngleAxis(offset * i + spawnDirection - spawnAngle /2 + offset / 2, Vector3.up);
             var transform1 = transform;
             Vector3 localPosition = localRotation * transform1.forward * spawnRangeMax;
-            Gizmos.color = edgeIndicatorColor;
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(localPosition + transform1.position, edgeIndicatorSize);
         }
         Gizmos.color = Color.red;

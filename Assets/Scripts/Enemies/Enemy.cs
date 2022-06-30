@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
         if (deathExplosion != null)
         { 
             var kaboom = Instantiate(deathExplosion);
-            Destroy(kaboom, 5f);
+            SpawnManager.EnemyPool.Release(gameObject);
         }
     }
 }
