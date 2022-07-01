@@ -21,13 +21,14 @@ public class SpawnManager : MonoBehaviour
     private void Awake()
     {
         InitiatePool();
-        Spawn();
-        Spawn();
-        Spawn();
-        Spawn();
     }
-    
-    
+
+    private void Update()
+    {
+        if (_shouldSpawn) SpawnTimer();
+    }
+
+
     public void InitiateSpawning()
     {
         _shouldSpawn = true;

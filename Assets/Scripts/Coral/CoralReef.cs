@@ -36,6 +36,11 @@ public class CoralReef : MonoBehaviour
         health = 100;
     }
 
+    private void Awake()
+    {
+        components = GetComponentsInChildren<MeshRenderer>();
+    }
+
     private void Update()
     {
         HandleSaturation();
@@ -48,7 +53,6 @@ public class CoralReef : MonoBehaviour
 
     private void HandleSaturation()
     {
-        components = GetComponentsInChildren<MeshRenderer>();
         foreach (var mesh in components)
         {
             mesh.material.SetFloat(SaturationAmount, _health / 100);
