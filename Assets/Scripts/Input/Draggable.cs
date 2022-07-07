@@ -3,20 +3,20 @@ using UnityEngine.Events;
 
 namespace Input
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody), typeof(Enemy))] 
     public class Draggable : MonoBehaviour
     {
-        [Header("Components")] [SerializeField]
-        private Rigidbody rb;
+        [Header("Components")] 
+        [SerializeField] private Rigidbody rb;
+        [SerializeField] private Enemy enemy;
 
         [Header("Variables")] 
         [SerializeField] private float tensileLimit;
         [SerializeField] private float flingSpeed;
 
-        [Header("Events")] public UnityEvent onTensionOverload;
+        [Header("Events")]
         public UnityEvent onTensionRelease;
         public UnityEvent onTensionIncrease;
-        public UnityEvent onFlung;
 
         private Vector2 _tensileDirection;
         private float _tensileStrength;
@@ -50,7 +50,6 @@ namespace Input
             {
                 Debug.Log("FWOOSH!");
                 Fling(_tensileDirection, _tensileStrength);
-                onTensionOverload?.Invoke();
             }
         }
 
@@ -62,7 +61,7 @@ namespace Input
             var y = Random.Range(0f, 1f);
             var z = Random.Range(0f, 1f);
             rb.AddTorque(new Vector3(x,y,z) * 75);
-            onFlung?.Invoke();
+            enemy.ChangeState(EnemyState.Flung);
         }
     }
 }

@@ -1,12 +1,12 @@
 using System;
-using Input;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] private GameObject enemyToSpawn;
+    [SerializeField] private CoralHealthManager targetHealthManager;
+    [SerializeField] private GameObject[] enemyTypes; 
 
     [Header("SpawnDirection")] 
     [Range(0, 360)]
@@ -15,10 +15,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float spawnAngle = 90;
     [SerializeField] private float spawnRangeMax = 1;
     [SerializeField] private float spawnRangeMin = 0.5f;
-
-    [Header("TestValues")] 
-    [SerializeField] private bool testBool;
-
+    
     [Header("GizmoSettings")] 
     [SerializeField] private bool drawGizmos = true;
     [Range(0,360)]
@@ -26,15 +23,40 @@ public class EnemySpawner : MonoBehaviour
     [Range(0.05f, 0.01f)]
     [SerializeField] private float edgeIndicatorSize = 0.025f;
 
-    public bool testingOn;
+    //Private variables
     private Transform _myTransform;
-    
+    private GameObject _enemyToSpawn;
+
+
+    private void Awake()
+    {
+        _myTransform = this.transform;
+    }
+
     public GameObject InitiateEnemy()
     {
-        var enemy = Instantiate(enemyToSpawn, GetRandomSpawnPoint(), Quaternion.identity);
-        enemy.GetComponent<EnemyMovement>().Target(this.transform);
-        enemy.transform.LookAt(_myTransform);
+        _enemyToSpawn = GetRandomEnemy();
+        var enemy = Instantiate(_enemyToSpawn, GetRandomSpawnPoint(), Quaternion.identity);
+        var enemyManager = enemy.GetComponent<Enemy>();
+        enemyManager.SetTarget(transform.position);
+        enemyManager.OnAttach += targetHealthManager.AddEnemy;
+        enemyManager.OnDetach += targetHealthManager.RemoveEnemy; 
+        
         return enemy;
+    }
+
+    private GameObject GetRandomEnemy()
+    {
+        var i = Random.Range(0.0f, 1.0f);
+        switch (i)
+        {
+            case > 0.8f:
+                return enemyTypes[1];
+            case > 0:
+                return enemyTypes[0];
+            default:
+                return enemyTypes[0];
+        }
     }
 
     private Vector3 GetRandomSpawnPoint()
@@ -46,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
         return _myTransform.position + new Vector3(Mathf.Sin(randRad),0 ,Mathf.Cos(randRad))*randDist;
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         if (!drawGizmos) return;
         float halfFOV = spawnAngle / 2.0f;

@@ -1908,8 +1908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556b7752cff0fcf438c134acbb2e7e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 0
-  materials: []
   components: []
 --- !u!65 &5848719289591805862
 BoxCollider:
@@ -2364,9 +2362,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722034141909284703}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.277, y: 0.383, z: 0.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.2772883, z: -0, w: 0.96078676}
+  m_LocalPosition: {x: -23.785772, y: 9.363533, z: 19.166578}
+  m_LocalScale: {x: 22.727026, y: 22.727026, z: 22.727026}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4531270963158592427}
@@ -2384,16 +2382,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90af16c02bcafb4db8b835a7e256412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 0}
+  targetHealthManager: {fileID: 252578879380629682}
+  enemyTypes:
+  - {fileID: 4163448027657916210, guid: ca7cca4acae0c5e40b14e5018d28419e, type: 3}
+  - {fileID: 7052082780798932193, guid: b0109c394fb9a274c8e65caef0867c74, type: 3}
   spawnDirection: 244.7
   spawnAngle: 149.3
   spawnRangeMax: 1
   spawnRangeMin: 0.3
-  testBool: 0
   drawGizmos: 0
   edgeIndicators: 10
   edgeIndicatorSize: 0.025
-  testingOn: 0
 --- !u!135 &8072904506134437498
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8144,13 +8143,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08a3ef5a36aac647925d1b0f404def8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 5121241039699640841, guid: ca7cca4acae0c5e40b14e5018d28419e,
-    type: 3}
   spawners:
   - {fileID: 8947510962796938734}
   - {fileID: 4504650392779180296}
   - {fileID: 3766039663805153403}
   amountToPool: 20
+  _shouldSpawn: 0
+  spawnIntervals:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &3062414979636081369
 GameObject:
   m_ObjectHideFlags: 0
@@ -14154,16 +14157,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90af16c02bcafb4db8b835a7e256412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 0}
+  targetHealthManager: {fileID: 252578879380629682}
+  enemyTypes:
+  - {fileID: 4163448027657916210, guid: ca7cca4acae0c5e40b14e5018d28419e, type: 3}
+  - {fileID: 7052082780798932193, guid: b0109c394fb9a274c8e65caef0867c74, type: 3}
   spawnDirection: 122.4
   spawnAngle: 141.62
   spawnRangeMax: 1
   spawnRangeMin: 0.3
-  testBool: 0
   drawGizmos: 0
   edgeIndicators: 10
   edgeIndicatorSize: 0.025
-  testingOn: 0
 --- !u!135 &1804461078619979418
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16214,16 +16218,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90af16c02bcafb4db8b835a7e256412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 0}
+  targetHealthManager: {fileID: 252578879380629682}
+  enemyTypes:
+  - {fileID: 4163448027657916210, guid: ca7cca4acae0c5e40b14e5018d28419e, type: 3}
+  - {fileID: 7052082780798932193, guid: b0109c394fb9a274c8e65caef0867c74, type: 3}
   spawnDirection: 0
   spawnAngle: 145
   spawnRangeMax: 1
   spawnRangeMin: 0.33
-  testBool: 0
   drawGizmos: 0
   edgeIndicators: 10
   edgeIndicatorSize: 0.025
-  testingOn: 0
 --- !u!135 &8518443273786648816
 SphereCollider:
   m_ObjectHideFlags: 0
